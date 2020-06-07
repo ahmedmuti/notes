@@ -1,0 +1,12 @@
+.myPadding {
+    padding: 10px 5rem;
+}
+
+@media (max-width: 991px) {
+    .container {
+        width: 100% !important;
+    }
+    .myPadding {
+        padding: 0.4rem 2rem;
+    }
+}

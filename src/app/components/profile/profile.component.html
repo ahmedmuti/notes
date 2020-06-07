@@ -1,0 +1,70 @@
+<section class="pt-5" id="profile">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <button data-toggle="modal" data-target="#AddNote" class="btn btn-info float-right">Add Note</button>
+            </div>
+            <div class="col-md-3 mt-5">
+                <div data-toggle="modal" data-target="#showNote" class="note text-center">
+                    <h2>Title#</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus eos quo saepe, laboriosam ea dolore aut suscipit similique. Eius dolorem hic doloribus atque minima cumque voluptas qui vel maiores eos!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================= Modals============================================================= -->
+
+<!------------------------------ Show Modal ------------------------------------->
+<div class="modal fade" id="showNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, molestiae?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------ /Show Modal ------------------------------------->
+<!------------------------------ Add Modal ------------------------------------->
+<div class="modal fade" id="AddNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="Title" type="text">
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <textarea class="form-control" placeholder="Type your Note" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Add</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------ /Add Modal ------------------------------------->
