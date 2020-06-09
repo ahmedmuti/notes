@@ -1,30 +1,60 @@
 <section id="signup">
     <div class="intro">
 
-        <form>
+        <form [formGroup]="signUp" (ngSubmit)="signUp.valid&&formData()">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" placeholder="Enter First Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" [class.is-valid]="!signUp.get('first_name').errors" formControlName="first_name" placeholder="Enter First Name" class="form-control">
+                        <div *ngIf="signUp.controls.first_name.errors&&signUp.controls.first_name.touched" class="alert alert-danger" role="alert">
+                            First name is required
+                        </div>
                     </div>
 
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <input type="text" placeholder="Enter Last Name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" [class.is-valid]="!signUp.controls.last_name.errors" formControlName="last_name" placeholder="Enter Last Name" class="form-control">
+                        <div *ngIf="signUp.controls.last_name.errors&&signUp.controls.last_name.touched" class="alert alert-danger" role="alert">
+                            Last name is required
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <input type="email" placeholder="Enter Your Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" [class.is-valid]="!signUp.controls.email.errors" formControlName="email" placeholder="Enter Your Email" class="form-control">
+                <div *ngIf="signUp.controls.email.errors&&signUp.controls.email.touched" class="alert alert-danger" role="alert">
+                    email is required
+                </div>
             </div>
             <div class="form-group">
-                <input type="number" placeholder="Enter Your Age" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="number" [class.is-valid]="!signUp.controls.age.errors" formControlName="age" placeholder="Enter Your Age" class="form-control">
+                <div *ngIf="signUp.controls.age.errors&&signUp.controls.age.touched" class="alert alert-danger" role="alert">
+                    Age is required
+                </div>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Enter Password" class="form-control" id="exampleInputPassword1">
+                <input type="password" [class.is-valid]="!signUp.controls.password.errors" formControlName="password" placeholder="Enter Password" class="form-control">
+                <div *ngIf="signUp.controls.password.touched&&signUp.controls.password.errors" class="alert alert-danger" role="alert">
+                    Password is required
+                    <ul>
+                        <li>password must contain at least eight characters</li>
+                        <li>at least one number</li>
+                        <li>and both lower and uppercase letters </li>
+                        <li>and special characters</li>
+                    </ul>
+                </div>
+
+
             </div>
-            <button type="submit" class="btn btn-info w-100">Sign Up</button>
+            <button [disabled]="signUp.invalid" [ngStyle]="signUp.invalid?invalidStyle:validStyle" type="submit" class="btn btn-info w-100"><span *ngIf="isClicked">Wating...</span> <span *ngIf="!isClicked">Sign Up</span></button>
+            <div *ngIf="isSuccess" class="alert alert-success mt-3 text-center" role="alert">
+                success
+            </div>
+
+            <div *ngIf="isEmailUnique" class="alert alert-danger text-center mt-3" role="alert">
+                {{ResponseMessage}}
+            </div>
         </form>
 
     </div>

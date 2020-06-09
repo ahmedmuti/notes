@@ -1,5 +1,6 @@
 .myPadding {
     padding: 10px 5rem;
+    z-index: 22;
 }
 
 @media (max-width: 991px) {

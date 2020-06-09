@@ -1,13 +1,26 @@
 <section id="signin">
     <div class="intro">
-        <form>
+        <form [formGroup]="signIn" (ngSubmit)="signIn.valid&&formData()">
             <div class="form-group">
-                <input type="email" placeholder="Enter Your Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" [class.is-valid]="!signIn.get('email').errors" formControlName="email" placeholder="Enter Your Email" class="form-control">
+                <div *ngIf="isEmail" class="alert alert-danger mt-3 text-center" role="alert">
+                    {{ResponseMessage}}
+                </div>
+
+                <div *ngIf="signIn.get('email').errors&&signIn.get('email').touched" class="alert alert-danger text-center" role="alert">
+                    email is required
+                </div>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Enter Password" class="form-control" id="exampleInputPassword1">
+                <input type="password" [class.is-valid]="!signIn.get('password').errors" formControlName="password" placeholder="Enter Password" class="form-control">
+                <div *ngIf="isValidPassword" class="alert alert-danger text-center mt-3" role="alert">
+                    {{ResponseMessage}}
+                </div>
+                <div *ngIf="signIn.get('password').errors&&signIn.get('password').touched" class="alert alert-danger" role="alert">
+                    password is required
+                </div>
             </div>
-            <button type="submit" routerLink="/profile" class="btn btn-info w-100">Login</button>
+            <button type="submit" class="btn btn-info w-100"><span *ngIf="isClicked">Wating....</span> <span *ngIf="!isClicked">Login</span></button>
         </form>
     </div>
 </section>
